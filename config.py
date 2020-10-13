@@ -1,11 +1,7 @@
 import json
 
 
-# Need to update this according to main program
-# For example Backup (y/n) frequency, folders, where it stores backups etc. 
-
-
-def orgIni(): # {
+def orgIni(): 
     default_config = { 
           "ExcludedFolders" : { 
               # Default OS folders...
@@ -28,32 +24,37 @@ def orgIni(): # {
           "Forced File Types" : { 
               "SystemFileTypes" : [],
               "UserFileTypes" : []
+          },
+          "Backup" : {
+              "PerformBackup" : 1,
+              "BackupFolders" : [],
+              "ZipTo" : "E:\\SystemBackups\\"
           }
       }
 
-    with open('config.json','w') as iniFile: 
-        json.dump(default_config, iniFile);
-        iniFile.close();
-# }
+    with open('config.json','w') as config: 
+        json.dump(default_config, config)
+        config.close()
 
-def readIni(iniFile): # { 
-      config = json.load(iniFile);
-      iniFile.close();
-# } 
+def readConfig():
+    with open('config.json','r') as config:
+        jsonData=json.load(config)
+        return jsonData
 
-def main(): # { 
-    # search for ini
-        # if exists read
-        # else 
+def compareConfigs():
+    pass
+
+
+def main():  
     try: 
-      with open('config.json','r') as iniFile: 
-        readIni(iniFile);
-        return readIni
+      with open('config.json','r') as config: 
+        config = json.load(config)
+        return 0
     except:
       print("No config file exists. Creating") 
       orgIni()
       return 1
-# } 
+ 
 
 if __name__ == "__main__": 
     main()

@@ -1,5 +1,10 @@
 import json
 
+
+# Need to update this according to main program
+# For example Backup (y/n) frequency, folders, where it stores backups etc. 
+
+
 def orgIni(): # {
     default_config = { 
           "ExcludedFolders" : { 

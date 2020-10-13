@@ -43,7 +43,7 @@ def main(): # {
     try: 
       with open('config.json','r') as iniFile: 
         readIni(iniFile);
-        return 0
+        return readIni
     except:
       print("No config file exists. Creating") 
       orgIni()
